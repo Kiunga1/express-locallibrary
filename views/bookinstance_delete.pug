@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1 Delete BookInstance
+  p Are you sure you want to delete the following BookInstance?
+
+  dl
+    dt Book
+    dd #{bookinstance.book.title}
+    dt Imprint
+    dd #{bookinstance.imprint}
+    dt Status
+    dd #{bookinstance.status}
+
+  form(action=`/catalog/bookinstance/${bookinstance._id}/delete` method='post')
+    input(type='hidden' name='bookinstanceid' value=bookinstance._id)
+    button(type='submit') Delete
+    a(href='/catalog/bookinstances') Cancel
